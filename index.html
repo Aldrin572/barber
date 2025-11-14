@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Barber Shop - San Antonio de los Altos</title>
+    <meta name="description" content="La mejor barbería en San Antonio de los Altos. Cortes modernos, arreglo de barba, y un ambiente profesional. ¡Agenda tu cita!">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome (para iconos) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <style>
+        /* --- RESET Y ESTILOS GLOBALES --- */
+        :root {
+            --color-negro-fondo: #121212;
+            --color-gris-oscuro: #1e1e1e;
+            --color-gris-claro: #333333;
+            --color-plata: #c0c0c0;
+            --color-blanco-texto: #f0f0f0;
+            --font-titulos: 'Oswald', sans-serif;
+            --font-texto: 'Roboto', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 70px;
+        }
+
+        body {
+            font-family: var(--font-texto);
+            background-color: var(--color-negro-fondo);
+            color: var(--color-blanco-texto);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        h1, h2, h3 {
+            font-family: var(--font-titulos);
+            text-transform: uppercase;
+            color: var(--color-blanco-texto);
+            margin-bottom: 20px;
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            letter-spacing: 2px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--color-plata), var(--color-gris-claro));
+        }
+
+        /* --- HEADER --- */
+        .header {
+            background-color: rgba(18, 18, 18, 0.9);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--color-gris-claro);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-img {
+            width: 50px;
+            height: 50px;
+        }
+
+        .logo-text {
+            font-family: var(--font-titulos);
+            font-size: 1.5rem;
+            color: var(--color-blanco-texto);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            color: var(--color-plata);
+            text-decoration: none;
+            font-family: var(--font-titulos);
+            font-size: 1rem;
+            transition: color 0.3s ease;
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #fff;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #fff;
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* --- SECCIÓN HERO --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background-image: 
+                linear-gradient(rgba(18, 18, 18, 0.8), rgba(18, 18, 18, 1)),
+                url('https://www.toptal.com/designers/subtlepatterns/uploads/grey-sandbag.png');
+            background-attachment: fixed;
+            color: #fff;
+            padding-top: 70px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+        }
+        
+        .hero-logo {
+            width: 150px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            font-weight: 300;
+            color: var(--color-plata);
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(145deg, #e0e0e0, #a0a0a0);
+            color: #111;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-family: var(--font-titulos);
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            border-radius: 5px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            border: none;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(200,200,200,0.2);
+        }
+
+        /* --- SECCIÓN POR QUÉ ELEGIRNOS --- */
+        #about {
+            background-color: var(--color-gris-oscuro);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .feature-item {
+            background-color: var(--color-negro-fondo);
+            padding: 40px 30px;
+            text-align: center;
+            border: 1px solid var(--color-gris-claro);
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .feature-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            border-color: var(--color-plata);
+        }
+
+        .feature-item .icon {
+            font-size: 3rem;
+            color: var(--color-plata);
+            margin-bottom: 20px;
+        }
+
+        .feature-item h3 {
+            font-size: 1.5rem;
+            color: var(--color-blanco-texto);
+        }
+        
+        .feature-item p {
+            color: var(--color-plata);
+        }
+
+        /* --- SECCIÓN SERVICIOS --- */
+        #services {
+            background-color: var(--color-negro-fondo);
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+            text-align: center;
+        }
+        .service-item {
+            padding: 20px;
+        }
+        .service-item .icon {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            color: var(--color-plata);
+        }
+        .service-item h3 {
+            font-size: 1.4rem;
+        }
+
+        /* --- SECCIÓN GALERÍA --- */
+        #gallery {
+            background-color: var(--color-gris-oscuro);
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 15px;
+            margin-top: 60px;
+        }
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 8px;
+            position: relative;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* --- SECCIÓN TESTIMONIOS --- */
+        #testimonials {
+            background-color: var(--color-negro-fondo);
+        }
+        .testimonials-container {
+            margin-top: 60px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .testimonial-card {
+            background-color: var(--color-gris-oscuro);
+            padding: 30px;
+            border-left: 5px solid var(--color-plata);
+            border-radius: 5px;
+        }
+        .testimonial-card p {
+            font-style: italic;
+            color: var(--color-blanco-texto);
+            margin-bottom: 15px;
+        }
+        .testimonial-card .author {
+            font-weight: bold;
+            color: var(--color-plata);
+            text-align: right;
+        }
+        
+        /* --- SECCIÓN UBICACIÓN Y HORARIO --- */
+        #location {
+             background-color: var(--color-gris-oscuro);
+        }
+        .location-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: center;
+            margin-top: 60px;
+        }
+        .location-info, .location-map {
+            flex: 1;
+            min-width: 300px;
+        }
+        .location-info p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .location-info .icon {
+            color: var(--color-plata);
+            font-size: 1.5rem;
+            width: 25px;
+        }
+        .location-map iframe {
+            width: 100%;
+            height: 350px;
+            border-radius: 8px;
+            border: 2px solid var(--color-gris-claro);
+        }
+
+        /* --- SECCIÓN CTA FINAL --- */
+        #contact {
+            text-align: center;
+            background: var(--color-negro-fondo);
+        }
+        #contact p {
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+            color: var(--color-plata);
+            font-size: 1.1rem;
+        }
+
+        /* --- FOOTER --- */
+        .footer {
+            background-color: #000;
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid var(--color-gris-claro);
+        }
+        .social-icons a {
+            color: var(--color-plata);
+            font-size: 1.8rem;
+            margin: 0 15px;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        .social-icons a:hover {
+            color: #fff;
+            transform: translateY(-5px);
+        }
+        .footer-text {
+            margin-top: 20px;
+            color: var(--color-gris-claro);
+            font-size: 0.9rem;
+        }
+        
+        /* --- ANIMACIONES DE SCROLL --- */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* Simplificando para mobile, se podría añadir un menú hamburguesa con JS */
+            }
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            .hero p {
+                font-size: 1.1rem;
+            }
+            h2 {
+                font-size: 2rem;
+            }
+            section {
+                padding: 60px 0;
+            }
+        }
+        
+    </style>
+</head>
+<body>
+
+    <!-- ================== HEADER ================== -->
+    <header class="header">
+        <nav class="navbar container">
+            <a href="#" class="logo-container">
+                <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5Ojf/2wBDAQoKCg0MDRoPDxo3JR8lNzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzf/wAARCAEAAQADASIAAhEBAxEB/8QAGwABAQADAQEBAAAAAAAAAAAAAAYEBQcDAQL/xAA6EAACAQMBBQQIAwUIAwAAAAAAAQIDBAUREgYhExQxQVFSkdEHIjJTYXEjQoGisbLCFiQzcoEzQ0Vi/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAH/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwDuAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACYury1oVHRrXVFCorqUJ1YqSXa02mBVAY1bWz/rFs/+5D3gW1s/wCsW3/7kPeBlAY1bWz/AKxbf/uQ94Ftbf8ArFt/+5D3gZQFazvLO8lKO0u6Fw4JymqVSM3FPqm03pkqqSAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABU1u6qW2l7+tQk4VoWlWUKiatKLpyabXRNJgWwKGlLirdaSsK1wlKdW2pTnKTzKUnBNyb7W3mwBq2vtbq2hXu9S3VSpqC1lWlQhOElGnSpNptNtqTfJ8EklybaNqY2h7m2hY3l9p24r3Va9uJ3EHUjBRhBvEYU8RTz5Kb5t82wNkB51xVjbW9WvNbVOnCU5Ndqim2vYjI2d3eXVG3vr/Wdyry5rTo1KdpKEIW/lJuEIpRzJRTXTJy5N8AN9BXvr+haWVxeRlG4p0Ic7VGpCTa5cPk0328jJ2dxdXlG2vb/Wlyry5rzo1adlKEIW/lJuEIpRzJRTXTJyfJvgBvgNWle399e31tpt2lrb2M1QdatSVSVSttqUko8lFJOMb823nyS57QAAAAAAAAAAAAAAAACpq//AMF6g/8AFVv+jIsgV9R0K2aev6VSaqU52laM4SSalFwkmmuhqQDQGi2lPS1hSpU40qcbWkouMUkl2JJLktjOAAAACrqK/wA4aj/8dW/6ci0BV1Gv5w1H/wCOrf8ATkBoFhqLd9e6fu5xnqC1jGcqtOKjC4pyeIV4rkm3jEornzXNc9G2q+kLC9qxvKM6tleRXk3dr5p1orn5LSaakvY0+fIsdM1p7paj1hO+qUqmnoOFG0nTkpxnUqU3KU4tck4rxU3z5rkgZ07G9vqV5a6lu6c7GvScHRt4OlGommqilJuUknz5NJrnhmZ07G9v6V5a6lu6c7GvScHRt4OlGommqilJuUknz5NJrnhmpad1HqLUOl9OULW7hb3lxK5jXr1KSlKjGhWlTj5K5JzaSTbaSTb58kZ/TNWe6Wo9YTvqlKpp6DhRtJ05KcZ1KlNylOLXJOK8VN8+a5IGyAxLqvaWtxc1vKUKEJVJqnFznJRTeIpczb7EuLMkAAAAAAAAAAAAAAAACJqPT9jqO0laX9JVKLaljGUoyhJPNNSSaaZLAGHp7Tdjpe3drYWyoUXOVSSUpScpt5lKTk2232tmYAAAAAAAAAAAAAAYupNMWGqrRUdQ20Liinvybcozi+1UXFpr3M+gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//2Q==" alt="Logo Alex Barber Shop" class="logo-img">
+                <span class="logo-text">Alex Barber Shop</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#about">Nosotros</a></li>
+                <li><a href="#services">Servicios</a></li>
+                <li><a href="#gallery">Galería</a></li>
+                <li><a href="#location">Ubicación</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- ================== HERO SECTION ================== -->
+        <section class="hero" id="home">
+            <div class="hero-content fade-in">
+                <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5Ojf/2wBDAQoKCg0MDRoPDxo3JR8lNzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzf/wAARCAEAAQADASIAAhEBAxEB/8QAGwABAQADAQEBAAAAAAAAAAAAAAYEBQcDAQL/xAA6EAACAQMBBQQIAwUIAwAAAAAAAQIDBAUREgYhExQxQVFSkdEHIjJTYXEjQoGisbLCFiQzcoEzQ0Vi/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAH/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwDuAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACYury1oVHRrXVFCorqUJ1YqSXa02mBVAY1bWz/rFs/+5D3gW1s/wCsW3/7kPeBlAY1bWz/AKxbf/uQ94Ftbf8ArFt/+5D3gZQFazvLO8lKO0u6Fw4JymqVSM3FPqm03pkqqSAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABU1u6qW2l7+tQk4VoWlWUKiatKLpyabXRNJgWwKGlLirdaSsK1wlKdW2pTnKTzKUnBNyb7W3mwBq2vtbq2hXu9S3VSpqC1lWlQhOElGnSpNptNtqTfJ8EklybaNqY2h7m2hY3l9p24r3Va9uJ3EHUjBRhBvEYU8RTz5Kb5t82wNkB51xVjbW9WvNbVOnCU5Ndqim2vYjI2d3eXVG3vr/Wdyry5rTo1KdpKEIW/lJuEIpRzJRTXTJy5N8AN9BXvr+haWVxeRlG4p0Ic7VGpCTa5cPk0328jJ2dxdXlG2vb/Wlyry5rzo1adlKEIW/lJuEIpRzJRTXTJyfJvgBvgNWle399e31tpt2lrb2M1QdatSVSVSttqUko8lFJOMb823nyS57QAAAAAAAAAAAAAAAACpq//AMF6g/8AFVv+jIsgV9R0K2aev6VSaqU52laM4SSalFwkmmuhqQDQGi2lPS1hSpU40qcbWkouMUkl2JJLktjOAAAACrqK/wA4aj/8dW/6ci0BV1Gv5w1H/wCOrf8ATkBoFhqLd9e6fu5xnqC1jGcqtOKjC4pyeIV4rkm3jEornzXNc9G2q+kLC9qxvKM6tleRXk3dr5p1orn5LSaakvY0+fIsdM1p7paj1hO+qUqmnoOFG0nTkpxnUqU3KU4tck4rxU3z5rkgZ07G9vqV5a6lu6c7GvScHRt4OlGommqilJuUknz5NJrnhmZ07G9v6V5a6lu6c7GvScHRt4OlGommqilJuUknz5NJrnhmpad1HqLUOl9OULW7hb3lxK5jXr1KSlKjGhWlTj5K5JzaSTbaSTb58kZ/TNWe6Wo9YTvqlKpp6DhRtJ05KcZ1KlNylOLXJOK8VN8+a5IGyAxLqvaWtxc1vKUKEJVJqnFznJRTeIpczb7EuLMkAAAAAAAAAAAAAAAACJqPT9jqO0laX9JVKLaljGUoyhJPNNSSaaZLAGHp7Tdjpe3drYWyoUXOVSSUpScpt5lKTk2232tmYAAAAAAAAAAAAAAYupNMWGqrRUdQ20Liinvybcozi+1UXFpr3M+gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//2Q==" alt="Logo Alex Barber Shop" class="hero-logo">
+                <h1>Tu Estilo, Nuestra Pasión</h1>
+                <p>Más que un corte, una experiencia. Tu mejor opción en San Antonio de los Altos.</p>
+                <a href="https://wa.me/message/POP4FXQCLZEYK1" target="_blank" class="cta-button">
+                    <i class="fab fa-whatsapp"></i> Agenda tu Cita
+                </a>
+            </div>
+        </section>
+
+        <!-- ================== POR QUÉ ELEGIRNOS ================== -->
+        <section id="about">
+            <div class="container fade-in">
+                <h2>¿Por Qué Elegirnos?</h2>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <div class="icon"><i class="fa-solid fa-star"></i></div>
+                        <h3>Barberos Expertos</h3>
+                        <p>Nuestro equipo de profesionales apasionados garantiza un corte preciso y un estilo impecable.</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="icon"><i class="fa-solid fa-couch"></i></div>
+                        <h3>Ambiente Moderno</h3>
+                        <p>Relájate en un ambiente diseñado para tu confort, mientras disfrutas de un servicio de primera.</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="icon"><i class="fa-solid fa-car"></i></div>
+                        <h3>Estacionamiento Gratis</h3>
+                        <p>Ofrecemos estacionamiento gratuito para clientes, haciendo tu visita cómoda y sin preocupaciones.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================== SERVICIOS ================== -->
+        <section id="services">
+            <div class="container fade-in">
+                <h2>Nuestros Servicios</h2>
+                <div class="services-grid">
+                    <div class="service-item">
+                        <div class="icon"><i class="fa-solid fa-scissors"></i></div>
+                        <h3>Cortes Modernos y Clásicos</h3>
+                    </div>
+                    <div class="service-item">
+                        <div class="icon"><i class="fa-solid fa-user-ninja"></i></div>
+                        <h3>Diseño y Arreglo de Barba</h3>
+                    </div>
+                    <div class="service-item">
+                        <div class="icon"><i class="fa-solid fa-child"></i></div>
+                        <h3>Cortes para Niños</h3>
+                    </div>
+                     <div class="service-item">
+                        <div class="icon"><i class="fa-solid fa-ruler-combined"></i></div>
+                        <h3>Afeitado Tradicional</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================== GALERÍA ================== -->
+        <section id="gallery">
+            <div class="container fade-in">
+                <h2>Nuestro Trabajo</h2>
+                <div class="gallery-grid">
+                    <!-- INSTRUCCIÓN: Reemplaza las URLs de 'src' con las de tus propias fotos -->
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1599338440026-de4a8c5b5eb0?q=80&w=1887" alt="Corte de cabello moderno">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1621605815971-fbc333ab5379?q=80&w=1887" alt="Arreglo de barba profesional">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1622288432454-216b2a0b16f2?q=80&w=1887" alt="Barbero en acción">
+                    </div>
+                     <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1567894340345-a63c1a7c504a?q=80&w=1887" alt="Afeitado clásico con navaja">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1620751294211-c17c5b361a49?q=80&w=1887" alt="Corte de cabello para niño">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1532710093739-947053e18581?q=80&w=1887" alt="Detalle de un corte fade">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================== TESTIMONIOS ================== -->
+        <section id="testimonials">
+            <div class="container fade-in">
+                <h2>Lo Que Dicen Nuestros Clientes</h2>
+                <div class="testimonials-container">
+                    <div class="testimonial-card">
+                        <p>"La atención es de primera, los barberos son unos artistas. Siempre salgo satisfecho con mi corte. ¡100% recomendados!"</p>
+                        <div class="author">- Cliente Frecuente</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <p>"El mejor lugar de San Antonio para un buen corte de barba. El ambiente es increíble y el trato es inmejorable."</p>
+                        <div class="author">- Cliente Satisfecho</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <p>"Visión, constancia y responsabilidad. Aquí entienden lo que uno busca y superan las expectativas. ¡La clave del éxito!"</p>
+                        <div class="author">- Cliente Fiel</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- ================== UBICACIÓN Y HORARIO ================== -->
+        <section id="location">
+            <div class="container fade-in">
+                <h2>Visítanos</h2>
+                <div class="location-content">
+                    <div class="location-info">
+                        <p><span class="icon"><i class="fa-solid fa-location-dot"></i></span>Mercado Cielo Abierto los Helechos, San Antonio De Los Altos, Miranda, Venezuela.</p>
+                        <p><span class="icon"><i class="fa-solid fa-clock"></i></span><strong>Martes a Sábado:</strong> 9:00 AM - 5:30 PM</p>
+                        <p><span class="icon"><i class="fa-solid fa-phone"></i></span>Contacta y agenda tu cita directamente por WhatsApp.</p>
+                    </div>
+                    <div class="location-map">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3925.048753238699!2d-66.9589816852031!3d10.370597192621142!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c2a58a7f5a9e3e3%3A0x6b677a2e2d8329b1!2sMercado%20a%20Cielo%20Abierto%20Los%20Helechos!5e0!3m2!1ses!2sve!4v1699581896173!5m2!1ses!2sve" 
+                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================== CTA FINAL ================== -->
+        <section id="contact">
+            <div class="container fade-in">
+                <h2>¿Listo para tu nuevo look?</h2>
+                <p>No esperes más para lucir impecable. Nuestro equipo está listo para atenderte. Haz clic en el botón para hablar con nosotros y reservar tu lugar.</p>
+                <a href="https://wa.me/message/POP4FXQCLZEYK1" target="_blank" class="cta-button">
+                    <i class="fab fa-whatsapp"></i> Agendar Ahora
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ================== FOOTER ================== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="social-icons">
+                <a href="https://www.instagram.com/alexbarbershop_saa/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+            <p class="footer-text">© 2024 Alex Barber Shop | Todos los derechos reservados.</p>
+            <p class="footer-text">San Antonio de los Altos, Miranda, Venezuela.</p>
+        </div>
+    </footer>
+
+    <script>
+        // --- SCRIPT PARA ANIMACIÓN AL HACER SCROLL ---
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1 // Se activa cuando el 10% del elemento es visible
+            });
+
+            // Selecciona todos los elementos que quieres animar
+            const elementsToAnimate = document.querySelectorAll('.fade-in');
+            elementsToAnimate.forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
